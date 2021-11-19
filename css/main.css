@@ -1,0 +1,42 @@
+.colorDiv{
+    width: 300px;
+}
+canvas{
+    width: 100%;
+    height: 300px;
+    border: 1px solid black;
+}
+#colorSlider{
+    width: 100%;
+    -webkit-appearance: none; 
+    appearance: none;
+    height: 30px;
+    border: 1px solid black;
+}
+
+#colorSlider::-webkit-slider-thumb {
+    -webkit-appearance: none; 
+    appearance: none;
+    width: 10px;
+    height: 30px; 
+    background: transparent;
+    cursor: pointer; 
+    border: 1px solid black;
+  }
+  
+#colorSlider::-moz-range-thumb {
+    width: 10px;
+    height: 30px; 
+    background: transparent; 
+    cursor: pointer; 
+    border: 1px solid black;
+  }
+
+table{
+    border: 1px solid black;
+}
+td{
+    width: 50px;
+    height: 50px;
+    border: 1px solid black;
+}
