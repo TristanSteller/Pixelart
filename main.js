@@ -2,7 +2,11 @@ let quickColor = document.getElementById("quickColor");
 let customColor = document.getElementById("customColorInput");
 let recentColor = document.getElementById("recentColor");
 let currentColor = document.getElementById("currentColorDisplay");
+let generateButton = document.getElementById("generate");
+let generateX = document.getElementById("x");
+let generateY = document.getElementById("y");
 
+const table = document.getElementById("canvas")
 
 let SelectedColor = "#f00";
 currentColor.style.backgroundColor = "#f00"
@@ -36,29 +40,37 @@ rgbToHex = (color) =>{
     return "#" + decimalToHex(values[0]) + decimalToHex(values[1]) + decimalToHex(values[2]);
 }
 
+changeColorRecent = (index) => {
+    if (recentColors[index] == SelectedColor){return};
+    currentColor.style.backgroundColor = recentColors[index];
+    customColor.value = recentColors[index];
+    updateRecentColors(recentColors[index]);
+}
+
 changeColorCustom = (colorCode) =>{
     if (colorCode == SelectedColor){return};
     currentColor.style.backgroundColor = colorCode;
     customColor.value = colorCode;
-    updateRecentColors(colorCode)
+    updateRecentColors(colorCode);
 }
 
 updateRecentColors = (color) =>{
-    console.log(color)
-    console.log(recentColors)
     if (recentColors.includes(color)){
         recentColors = recentColors.filter(function(value){ 
             return value != color;
         });
     }
-    recentColors.unshift(color)
-    recentColors.splice(4)
-    console.log(recentColors)
+    recentColors.unshift(color);
+    recentColors.splice(4);
+    let row = recentColor.rows[0]
+    for (let i = 0, cell; cell = row.cells[i]; i++){
+        cell.style.backgroundColor = recentColors[i];
+    }
 }
 
 
 
-//Make all cels of table clickable
+//Make all cells of table clickable
 for (let i = 0, row; row = quickColor.rows[i]; i++) {
    for (let j = 0, cell;cell = row.cells[j]; j++) {
     let color = cell.style.backgroundColor
@@ -69,10 +81,13 @@ for (let i = 0, row; row = quickColor.rows[i]; i++) {
 }
 for (let i = 0, row; row = recentColor.rows[i]; i++) {
     for (let j = 0, cell;cell = row.cells[j]; j++) {
-     let  currCell = row.cells[j]
-     let color = cell.style.backgroundColor;
      cell.addEventListener("click", function(){
-         changeColor(rgbToHex(color));
+        if (j==0){changeColorRecent(0);
+        }else if (j==1){changeColorRecent(1);
+        }else if (j==2){changeColorRecent(2);
+        }else if (j==3){changeColorRecent(3);
+        }
+         ;
      })
     }  
  }
@@ -84,4 +99,20 @@ customColor.addEventListener("change", function(){
     if (customColor.value.length > 9){customColor.value = customColor.value.substring(0, 9);};
     //Connecting it to its function
     changeColorCustom(customColor.value);
+})
+
+//Create workarea
+generateTable = (x, y) => {
+    for(i=0; i<x; i++){
+        let row = table.insertRow(i);
+        for(j=0; j<y; j++){
+            let cell = row.insertCell(j)
+            cell.class = "cell"
+        }
+    }
+}
+
+
+generateButton.addEventListener("click", function(){
+    generateTable(generateX.value, generateY.value)
 })

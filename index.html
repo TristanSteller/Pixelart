@@ -8,40 +8,55 @@
     <title>Document</title>
 </head>
 <body>
-    <table id="quickColor">
-        <tr>
-            <td style="background-color: #f00;"></td>
-            <td style="background-color: #f90;"></td>
-            <td style="background-color: #ff0;"></td>
-            <td style="background-color: #0f0;"></td>
-        </tr>
-        <tr>
-            <td style="background-color: #600060;"></td>           
-            <td style="background-color: #00f;"></td>
-            <td style="background-color: #0ff;"></td>
-            <td style="background-color: #060;"></td>
-        </tr>
-        <tr>
-            <td style="background-color: #630;"></td>
-            <td style="background-color: #000;"></td>
-            <td style="background-color: #fff;"></td>
-            <td style="background-image: url(src/remove-icon-md.png);
-                        background-size: contain;">
-            </td>
-        </tr>
-    </table>
-    <table id='recentColor'>
-        <tr>
-            <td style="background-color: #fff;"></td>
-            <td style="background-color: #fff;"></td>
-            <td style="background-color: #fff;"></td>
-            <td style="background-color: #fff;"></td>
-        </tr>
-    </table>
-    <div id="customColor">
-        <div id='currentColorDisplay'></div>
-        <input type="text" id="customColorInput">
-    </div>  
+    <div class="workArea">
+        <table class="canvas"></table>
+    </div>
+    <div class="settings">
+        <table id="quickColor">
+            <tr>
+                <td style="background-color: #f00;"></td>
+                <td style="background-color: #f90;"></td>
+                <td style="background-color: #ff0;"></td>
+                <td style="background-color: #0f0;"></td>
+            </tr>
+            <tr>
+                <td style="background-color: #600060;"></td>
+                <td style="background-color: #00f;"></td>
+                <td style="background-color: #0ff;"></td>
+                <td style="background-color: #060;"></td>
+            </tr>
+            <tr>
+                <td style="background-color: #630;"></td>
+                <td style="background-color: #000;"></td>
+                <td style="background-color: #fff;"></td>
+                <td style="background-image: url(src/remove-icon-md.png);
+                            background-size: contain;">
+                </td>
+            </tr>
+        </table>
+        <table id='recentColor'>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+        <div id="customColor">
+            <div id='currentColorDisplay'></div>
+            <input type="text" id="customColorInput">
+        </div>
+        <div class="generateTable">
+            <div>
+                <input type="number" name="x" id="x" value="16">x
+            </div>
+            <div>
+                <input type="number" name="y" id="y" value="16">y
+            </div>
+        
+            <button id="generate">Generate</button>
+        </div>
+    </div>
     <script src="main.js"></script>
 </body>
 </html>
